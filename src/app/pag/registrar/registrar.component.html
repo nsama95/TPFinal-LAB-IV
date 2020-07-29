@@ -1,0 +1,42 @@
+<html>
+<div *ngIf="mostrarAlert===true" class="alert alert-primary" role="alert">
+  {{mensajeAlert}}
+</div>
+
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      
+    
+      <h2 class="active"> Registro </h2>
+      
+  
+      <div class="fadeIn first">
+        <img src="https://images.vexels.com/media/users/3/152018/isolated/preview/c728796e46fb111cce09ffd324a40949-diente-colorido-icono-by-vexels.png" style="width: 50%;height: 50%;position: relative;">
+    </div>
+  
+      <!-- Login Form -->
+      <form>
+        <input type="text" [(ngModel)]='usuarios.nombre' class="fadeIn second" name="nombre" placeholder="nombre" >
+
+        <input type="email" [(ngModel)]='usuarios.correo' class="fadeIn second" name="correo" placeholder="correo electronico" >
+
+        <input type="password" class="fadeIn third" name='password' placeholder="*************" [(ngModel)]='usuarios.password'>
+
+        <input *ngIf='usuarios.correo' type="file" value="Subir foto" (change)="subirFoto($event)">
+
+        <re-captcha class="captcha" (resolved)="resolved($event)" siteKey="6LdcXAAVAAAAAHxGowz5uvLwIFdjXXyUBfkoxTuy" style="left:20% ;position: relative;"></re-captcha>
+       
+        <button type=button *ngIf="todoOk == true" (click)="OnSubmitLogin()">registrarse</button>
+        <br>
+        <p class="message">Volver a inicio <a href="/login">aqui</a></p>
+      </form>
+  
+      <!-- Remind Passowrd -->
+      
+  
+    </div>
+   
+  </div>
+  </html>
+  

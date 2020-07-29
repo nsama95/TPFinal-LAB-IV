@@ -1,0 +1,42 @@
+<html>
+<div [class]="colorAlert" *ngIf="mostrarAlert===true" class="alert alert-primary" role="alert">
+  {{mensajeAlert}}
+</div>
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 class="active"> Bienvenidos a BUENAS SONRISAS</h2>
+
+      <div class="fadeIn first">
+          <img src="https://images.vexels.com/media/users/3/152018/isolated/preview/c728796e46fb111cce09ffd324a40949-diente-colorido-icono-by-vexels.png" style="width: 50%;height: 50%;position: relative;">
+      </div>
+  
+      <!-- Login Form -->
+      <form>
+        <input type="text" [(ngModel)]='usuarios.correo' class="fadeIn second" name="correo" placeholder="correo electronico" >
+
+        <input type="password" class="fadeIn third" name='password' placeholder="*************" [(ngModel)]='usuarios.password'>
+        <re-captcha class="captcha" (resolved)="resolved($event)" siteKey="6LdcXAAVAAAAAHxGowz5uvLwIFdjXXyUBfkoxTuy"></re-captcha>
+       
+        <button type=button *ngIf="todoOk == true" (click)="OnSubmitLogin()">Ingresar</button>
+        <br>
+        <select class="browser-default custom-select" value="" #C (click)="selecionCuenta(C.value)">
+          <option disabled selected>Usuarios</option>
+          <option value="admin">Administrador</option>
+          <option value="cl">Cliente 1</option>
+          <option value="rec">Recepcionista</option>
+          <option value="esp1">Especialista 1</option>
+          <option value="esp2">Especialista 2</option>
+      </select>
+      <br>
+        <p class="message">Registrate <a href="/registrar">aqui</a></p>
+      </form>
+  
+      <!-- Remind Passowrd -->
+      
+  
+    </div>
+   
+  </div>
+  </html>

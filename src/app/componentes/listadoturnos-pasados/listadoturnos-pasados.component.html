@@ -1,0 +1,75 @@
+<app-menu></app-menu>
+<br>
+<div *ngIf="mostrar===true" class="text-center ">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<table  *ngIf="mostrar===false"  class="table"  style="background-color: rgb(0, 0, 0);color:white">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Especialista</th>
+      <th>Encuesta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let turno of turnos">
+      <td>{{turno.fecha}}</td>
+      <td>{{turno.especialista}}</td>
+      <td>
+        <ng-container *ngIf="turno.entrevista">
+          <img src="{{turno.entrevista | entrevista}}" style="height: 40px;">
+        </ng-container>
+        <ng-container *ngIf="!turno.entrevista"><button class="btn btn-info" (click)="abrirEncuenta(turno.fecha)">Encuesta</button></ng-container>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+<div  *ngIf="abrir===true"  class="card text-white bg-success mb-3" style="max-width: 80rem; position: fixed; top: 20%; left: 35%; z-index:99;">
+  <div class="card-header" >Buena sonrisa🦷</div>
+  <div  *ngFor="let turno of turnos"  class="card-body">
+    <div *ngIf="turno.fecha===fechaTurno">
+      <h5 class="card-title" >Califica a la clinica del 1 al 10. 
+      </h5>
+      <select class="custom-select"style="width: 100%;">
+      <option >1</option>
+      <option >2</option>
+      <option >3</option>
+      <option >4</option>
+      <option >5</option>
+      <option>6</option>
+      <option>7</option>
+      <option >8</option>
+      <option >9</option>
+      <option >10</option>
+      
+      </select>
+      <h5 class="card-title" >Califica al Especialista del 1 al 10. 
+      </h5>
+      <select class="custom-select"style="width: 100%;">
+      <option >1</option>
+      <option >2</option>
+      <option >3</option>
+      <option >4</option>
+      <option >5</option>
+      <option>6</option>
+      <option>7</option>
+      <option >8</option>
+      <option >9</option>
+      <option >10</option>
+      
+      </select>
+
+    <h5 class="card-title" >¿Quéres dejarnos un comentario?</h5>
+    <div class="input-group">
+      <textarea class="form-control" [maxLength]="66" aria-label="With textarea" [(ngModel)]="resenia" name="resenia"></textarea>
+  </div>
+  <br>
+  <button class="btn btn-danger" style="width: 40%;" (click)="cerrarEncuesta()">Cancelar</button>
+  <button class="btn btn-success" style="width: 40%;" (click)="agregarEncuesta(turno.fecha, turno.especialista, turno.cliente)">Enviar</button>
+</div>
+  </div>
+</div>
+

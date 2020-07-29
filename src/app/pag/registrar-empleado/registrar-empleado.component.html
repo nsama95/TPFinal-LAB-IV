@@ -1,0 +1,44 @@
+
+
+  <app-menu></app-menu>
+  <div *ngIf="mostrar===true" class="text-center ">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+<div *ngIf="mostrar===false" class="wrapper fadeInDown">
+    <div id="formContent">
+      
+    
+      <h2 class="active"> Registrar empleado </h2>
+      
+      <div class="fadeIn first">
+        <img src="https://images.vexels.com/media/users/3/152018/isolated/preview/c728796e46fb111cce09ffd324a40949-diente-colorido-icono-by-vexels.png" style="width: 50%;height: 50%;position: relative;">
+    </div>
+  
+      <!-- Login Form -->
+      <form>
+        <input type="text" [(ngModel)]='usuarios.nombre' class="fadeIn second" name="nombre" placeholder="nombre" >
+
+        <input type="text" [(ngModel)]='usuarios.correo' class="fadeIn second" name="correo" placeholder="correo electronico" >
+        
+        <input type="text" [(ngModel)]='usuarios.password' class="fadeIn second" name="password" placeholder="**************" >
+        
+        <select class="custom-select" [(ngModel)] = "usuarios.tipo" style="width: 86%;" name="produc.tipo">
+            <option value = "cl">Cliente</option>
+            <option value = "esp">Especialista</option>
+            <option value = "rec">Recepcionista</option>
+        </select>
+        
+        <re-captcha class="captcha" (resolved)="resolved($event)" siteKey="6LdcXAAVAAAAAHxGowz5uvLwIFdjXXyUBfkoxTuy" style="left:20% ;position: relative;"></re-captcha>
+       
+        <button type=button *ngIf="todoOk == true" (click)="OnSubmitLogin()">registrar</button>
+        <br>
+      </form>
+  
+      <!-- Remind Passowrd -->
+      
+  
+    </div>
+   
+  </div>

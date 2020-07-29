@@ -1,0 +1,27 @@
+.foto{
+left: 50%;
+position: relative;
+}
+nav{
+    color:darkcyan;
+    background-size: cover;
+}
+.table {
+    color:black;
+    background-size: cover;
+   
+    border: transparent;
+    color: rgb(0, 0, 0);
+}
+.table-responsive{
+    border:transparent;
+  color: rgb(0, 0, 0);
+  border-color: transparent;
+}
+.card{
+    color: black;
+    left: 70%;
+position: relative;
+
+}
+

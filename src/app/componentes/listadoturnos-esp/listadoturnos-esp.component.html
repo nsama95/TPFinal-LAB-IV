@@ -1,0 +1,49 @@
+
+<app-menu></app-menu>
+<br>
+<div *ngIf="mostrar===true" class="text-center ">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+<table  *ngIf="mostrar===false"  class="table" id="tablaAutos" style="background-color: rgb(5, 6, 7);color:white">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Cliente</th>
+            <th>Sala</th>
+            <th>Estado</th>
+            <th>Reseña</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let turno of turnos">
+            <td>{{turno.fecha}}</td>
+            <td>{{turno.cliente}}</td>
+            <td>{{turno.sala}}</td>
+            <td>
+                <ng-container *ngIf="!turno.estado">
+                    <button class="btn btn-info" (click)="realizarTurno(turno)">Marcar como finalizado</button>
+
+                </ng-container>
+                <ng-container *ngIf="turno.estado">
+                    <img src="{{turno.estado | listo}}" style="height: 40px;">
+                </ng-container>
+            </td>
+            <td>
+                <ng-container *ngIf="!turno.resenia">
+                    
+                    <div class="input-group">
+                        <textarea class="form-control" aria-label="With textarea" [(ngModel)]="turno.reseniaAux" name="turno.reseniaAux"></textarea>
+                    </div>
+                    <br>
+                    <button class="btn btn-info" (click)="agregarResen(turno)">Agregar reseña</button>
+                </ng-container>
+                <ng-container *ngIf="turno.resenia">
+                    {{turno.resenia}}
+                </ng-container>
+            </td>
+
+        </tr>
+    </tbody>
+</table>

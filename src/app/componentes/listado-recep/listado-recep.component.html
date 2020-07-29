@@ -1,0 +1,26 @@
+<app-menu></app-menu>
+<div *ngIf="mostrar===true" class="text-center ">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+<table *ngIf="mostrar===false"  class="table" id="tablaAutos" style="background-color: rgb(0, 0, 0);color:white">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Cliente</th>
+            <th>Especialista</th>
+            <th>Emitido</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let turno of turnos">
+                <td>{{turno.fecha}}</td>
+                <td>{{turno.cliente}}</td>
+                <td>{{turno.especialista}}</td>
+                <td>{{turno.por}}</td>
+                <td><button class="btn btn-danger" (click)="cancelarTurno(turno)">Calcelar Turno</button></td>
+        </tr>
+    </tbody>
+</table>

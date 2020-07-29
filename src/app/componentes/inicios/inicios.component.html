@@ -1,0 +1,22 @@
+<app-menu></app-menu>
+<br>
+<div *ngIf="mostrar===true" class="text-center ">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+<br>
+<table *ngIf="mostrar===false" class="table" id="tablaTurn" style="background-color: rgb(0, 0, 0);color:white">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ini of inicios">
+            <td>{{ini.mail}}</td>
+            <td>{{ini.today.toDate() | date: 'short'}}</td>
+        </tr>
+    </tbody>
+</table>

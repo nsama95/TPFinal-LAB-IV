@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<!--CLIENTE-->
+<nav *ngIf="tipo === 'cl'" class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    
+    <ul class="nav navbar-nav">
+     
+      <li> <a class="navbar-brand" >
+        <img src="{{foto}}" width="30" height="30" alt="" loading="lazy" class="d-inline-block align-top" >{{ nombre }}</a>
+      </li>
+      <li><a href="/turnosPendientes">Turnos pendientes</a></li>
+      <li><a href="/historialTurnos">Ver historial de turnos</a></li>
+      <li><a href="/sacarTurnos">Sacar turnos</a></li>
+      <li><a (click)="cerrarSesion()" >Cerrar sesión</a></li>
+   
+   <li><a (click)="info()" style="left: 80%;
+    position: relative;"> Buena sonrisa🦷 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-code-slash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0zm-.999-3.124a.5.5 0 0 1 .33.625l-4 13a.5.5 0 0 1-.955-.294l4-13a.5.5 0 0 1 .625-.33z"/>
+  </svg></a></li> 
+   
+    </ul>
+  </div>
+</nav>
+
+
+<!--ESPECIALISTA-->
+<nav *ngIf="tipo === 'esp'" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      
+      <ul class="nav navbar-nav">
+       
+        <li> <a class="navbar-brand" >
+          <img src="{{foto}}" width="30" height="30" alt="" loading="lazy" class="d-inline-block align-top" >{{ nombre }}</a>
+        </li>
+        <li><a href="/turnosEsp" >Listado de turnos</a></li>
+        <li><a (click)="cerrarSesion()" >Cerrar sesión</a></li>
+     
+     <li><a (click)="info()" style="left: 80%;
+      position: relative;"> Buena sonrisa🦷 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-code-slash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0zm-.999-3.124a.5.5 0 0 1 .33.625l-4 13a.5.5 0 0 1-.955-.294l4-13a.5.5 0 0 1 .625-.33z"/>
+    </svg></a></li> 
+     
+      </ul>
+    </div>
+  </nav>
+
+<!--ADMINISTRADOR-->
+  <nav *ngIf="tipo === 'admin'" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      
+      <ul class="nav navbar-nav">
+       
+        <li> <a class="navbar-brand" >
+          <img src="{{foto}}" width="30" height="30" alt="" loading="lazy" class="d-inline-block align-top" >{{ nombre }}</a>
+        </li>
+        <li><a href="/registro">Alta de empleado/cliente</a></li>
+        <li><a href="/estadisticaEsp">Estadisticas Especialidades</a></li>
+        <li><a href="/estadisticaTurnos">Estadisticas turnos</a></li>
+        <li><a href="/inicios">Ver registro de inicios</a></li>
+        <li><a (click)="cerrarSesion()" >Cerrar sesión</a></li>
+     
+     <li><a (click)="info()" style="left: 80%;
+      position: relative;"> Buena sonrisa🦷 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-code-slash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0zm-.999-3.124a.5.5 0 0 1 .33.625l-4 13a.5.5 0 0 1-.955-.294l4-13a.5.5 0 0 1 .625-.33z"/>
+    </svg></a></li> 
+     
+      </ul>
+    </div>
+  </nav>
+
+<!--RECEPCIONISTA-->
+<nav *ngIf="tipo === 'rec'" class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    
+    <ul class="nav navbar-nav">
+     
+      <li> <a class="navbar-brand" >
+        <img src="{{foto}}" width="30" height="30" alt="" loading="lazy" class="d-inline-block align-top" >{{ nombre }}</a>
+      </li>
+      <li><a href="/sacarTurnos">Sacar turno</a></li>
+      <li><a href="/turnosPendientesGeneral">Listado de turnos pendientes</a></li>
+      
+      <li><a (click)="cerrarSesion()" >Cerrar sesión</a></li>
+   
+   <li><a (click)="info()" style="left: 80%;
+    position: relative;"> Buena sonrisa🦷 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-code-slash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0zm-.999-3.124a.5.5 0 0 1 .33.625l-4 13a.5.5 0 0 1-.955-.294l4-13a.5.5 0 0 1 .625-.33z"/>
+  </svg></a></li> 
+   
+    </ul>
+  </div>
+</nav>
+  
+
+
+</body>
+</html>
+
+ 
+
+<div  *ngIf="ver===true" class="card" style="width: 30rem;" >
+  <h5 class="card-header">Natalia Samaniego</h5>
+  <div class="card-body">
+    <h5 class="card-subtitle mb-2 text-muted" style="color: indianred;">Github:<a href="https://github.com/nsama95/TPFinal-LAB-IV"> nsama95</a></h5>
+    <h5 class="card-text" style="color: indianred;"> Profesor: Mario Rampi </h5>
+    <h5 class="card-text" style="color: indianred;"> Materia: Laboratorio IV </h5>
+    <h5 class="card-text"style="color: indianred;"> Trabajo Practico Final </h5>
+    <a  class="btn btn-primary" (click)="cerrarInfo()">Cerrar</a>
+  </div>
+</div>

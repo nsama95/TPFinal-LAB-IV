@@ -1,0 +1,74 @@
+<app-menu></app-menu>
+<br>
+<div *ngIf="mostrar===true" class="text-center ">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+<div *ngIf="mail !== 'recep@gmail.com'">
+    <div *ngIf="mostrar===false" class="form">
+     
+        <label style="color: rgb(0, 0, 0);">Elija su especialista:</label>
+        <form class="login-form">
+            <select  style="color: rgb(0, 0, 0);" class="custom-select" [(ngModel)]="turno.especialista" style="width: 100%;"
+                name="turno.especialista" (click)="buscarFechas(turno.especialista)">
+                <option value="esp1@gmail.com" style="color: rgb(0, 0, 0);">Especialista 1</option>
+                <option value="esp2@gmail.com" style="color: rgb(0, 0, 0);">Especialista 2</option>
+            </select>
+            <br>
+            <br>
+
+            <label *ngIf="turno.especialista" style="color: rgb(0, 0, 0);">Selecione la fecha disponible:</label>
+            <select *ngIf="turno.especialista" class="custom-select" [(ngModel)]="turno.fecha" name="turno.fecha">
+             
+                <ng-container *ngFor="let fecha of fechas">
+                    <option *ngIf="fecha.disponible == 'si'" [value]="fecha.fecha">
+                        {{fecha.fecha}}
+                    </option>
+                    
+                </ng-container>
+
+            </select>
+            
+            <button *ngIf="turno.especialista && turno.fecha" type="button" (click)="sacarTurno()">Sacar Turno</button>
+        </form>
+    </div>
+</div>
+
+
+
+<div *ngIf="mail === 'recep@gmail.com'" >
+    <div *ngIf="mostrar===false" class="form">
+        <!-- <img src="../../../assets/img/singup.png" class="image"> -->
+        <label style="color: rgb(0, 0, 0);">Elija su especialista:</label>
+        <form class="login-form">
+            <select class="custom-select" [(ngModel)]="turno.especialista" style="width: 100%;"
+                name="turno.especialista" (click)="buscarFechas(turno.especialista)">
+                <option value="esp1@gmail.com">Especialista 1</option>
+                <option value="esp2@gmail.com">Especialista 2</option>
+            </select>
+            <br>
+            <br>
+
+            <label *ngIf="turno.especialista" style="color: rgb(0, 0, 0);">Selecione la fecha disponible:</label>
+            <select *ngIf="turno.especialista" class="custom-select" [(ngModel)]="turno.fecha" name="turno.fecha">
+               
+                <ng-container *ngFor="let fecha of fechas">
+                    <option *ngIf="fecha.disponible == 'si'" [value]="fecha.fecha">
+                        {{fecha.fecha}}
+                    </option>
+                    
+                </ng-container>
+            </select>
+
+            <label *ngIf="turno.especialista && turno.fecha" style="color: rgb(0, 0, 0);">Ingrese el nombre/correo del paciente</label>
+            <div  *ngIf="turno.especialista && turno.fecha" class="input-group mb-3">
+                <input type="text"  [(ngModel)]="nombre" name="nombre" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+
+
+   
+            <button *ngIf="turno.especialista && turno.fecha && nombre" type="button" (click)="sacarTurnoRec()">Sacar Turno</button>
+        </form>
+    </div>
+</div>
