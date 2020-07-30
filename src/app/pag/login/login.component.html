@@ -17,7 +17,7 @@
         <input type="text" [(ngModel)]='usuarios.correo' class="fadeIn second" name="correo" placeholder="correo electronico" >
 
         <input type="password" class="fadeIn third" name='password' placeholder="*************" [(ngModel)]='usuarios.password'>
-        <re-captcha class="captcha" (resolved)="resolved($event)" siteKey="6LdcXAAVAAAAAHxGowz5uvLwIFdjXXyUBfkoxTuy"></re-captcha>
+        <re-captcha class="captcha" (resolved)="resolved($event)" siteKey="6LcuI7gZAAAAAP7g0ojUaBrCcdmwop7ziNM3Vt_7"></re-captcha>
        
         <button type=button *ngIf="todoOk == true" (click)="OnSubmitLogin()">Ingresar</button>
         <br>
